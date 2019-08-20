@@ -116,4 +116,18 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <update id="updateCgNameById" parameterType="map">
+    update mmall_category
+    set name=#{cgname}
+    where id=#{cgid}
+  </update>
+  
+  <select id="getChildrenCategories" parameterType="int" resultType="com.mmall.pojo.Category">
+    select 
+    <include refid="Base_Column_List"/>
+    where parent_id = #{parentId}
+  </select>
+
 </mapper>
